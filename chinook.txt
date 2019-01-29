@@ -15,8 +15,21 @@
    ...> WHERE title LIKE '%music%'
    ...> ;
 - Récupérer tous les albums écrits par AC/DC
+sqlite> SELECT title FROM albums
+   ...> WHERE artistid = (
+   ...> SELECT artistid FROM artists
+   ...> WHERE name = 'AC/DC'
+   ...> );
 - Récupérer tous les titres des albums de AC/DC
+sqlite> SELECT name FROM tracks
+   ...> WHERE composer = 'AC/DC';
 - Récupérer la liste des titres de l'album "Let There Be Rock"
+sqlite> SELECT name, albumid FROM tracks
+   ...> WHERE albumid = (
+   ...> SELECT albumid
+   ...> FROM albums
+   ...> WHERE title = 'Let There Be Rock'
+   ...> );
 - Afficher le prix de cet album ainsi que sa durée totale
 - Afficher le coût de l'intégralité de la discographie de "Deep Purple"
 - Créer l'album de ton artiste favori en base, en renseignant correctement les trois tables albums, artists et tracks
